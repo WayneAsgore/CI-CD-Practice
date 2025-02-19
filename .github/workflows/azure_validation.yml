@@ -15,6 +15,7 @@ jobs:
 
       - name: Validate Bicep File
         run: | 
+          if ls *.bicep 1>/dev/null 2>&1; then
           for file in *.bicep; do
             echo "Validating $file..."
             az bicep build --file "$file"
