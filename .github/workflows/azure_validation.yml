@@ -14,7 +14,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Validate Bicep File
-        run: az bicep build --file *.bicep
+        run: | 
+          for file in *.bicep; do
+            echo "Validating $file..."
+            az bicep build --file "$file"
+          done
 
       - name: Validation Passed ✅
         if: success()
