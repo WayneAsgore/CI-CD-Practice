@@ -15,8 +15,8 @@ jobs:
 
       - name: Validate Bicep File
         run: | 
-          for file in *.bicep; do
-            echo "Validating $file..."
+          find . -type f -name "*.bicep" | while read file; do
+            echo "🔍 Validating $file..."
             az bicep build --file "$file"
           done
 
