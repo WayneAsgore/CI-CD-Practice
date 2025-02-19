@@ -1,6 +1,7 @@
 param location string 
 param storageName string 
-param name string 
+param name string
+param NSG_name string 
 
 
 resource storageaccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
@@ -37,4 +38,10 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
     publicAccess: 'None'
   }
 }
-//version 6
+
+resource nsg 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
+  name: NSG_name
+  properties: {
+    
+  }
+}
