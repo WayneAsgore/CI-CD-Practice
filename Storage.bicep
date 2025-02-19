@@ -37,3 +37,4 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
     publicAccess: 'Container'
   }
 }
+//v1.0.1
