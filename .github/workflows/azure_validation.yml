@@ -1,0 +1,21 @@
+name: Validating Bicep Syntax
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  validate_bicep:
+    name: Check Bicep Syntax
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Validate Bicep File
+        run: az bicep build --file Success.bicep
+
+      - name: Validation Passed ✅
+        if: success()
+        run: echo "The Bicep file syntax is correct and ready for manual deployment."
