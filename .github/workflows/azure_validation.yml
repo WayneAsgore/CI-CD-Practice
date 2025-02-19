@@ -15,12 +15,11 @@ jobs:
 
       - name: Validate Bicep File
         run: | 
-          find . -type f -name "*.bicep" | while read file; do
-            echo "🔍 Validating $file..."
+          for file in *.bicep; do
+            echo "Validating $file..."
             az bicep build --file "$file"
           done
 
       - name: Validation Passed ✅
         if: success()
         run: echo "The Bicep file syntax is correct and ready for manual deployment."
-#v1.0.6
